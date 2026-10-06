@@ -3,7 +3,9 @@ import { getPageSeo, getSettings, type FaqVM, type PostVM, type ProjectVM, type 
 import type { Settings } from "@/content/site";
 import { stripHtml } from "@/lib/utils";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+// On Vercel, fall back to the project's production domain when NEXT_PUBLIC_SITE_URL isn't set.
+const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "";
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || vercelUrl || "http://localhost:3000").replace(/\/$/, "");
 
 export function absoluteUrl(path = "/") {
   if (/^https?:\/\//.test(path)) return path;

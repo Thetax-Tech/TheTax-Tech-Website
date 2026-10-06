@@ -1,0 +1,5 @@
+# Local secrets and data must never be uploaded with `vercel deploy`.
+# Set production values in Vercel → Project → Settings → Environment Variables.
+.env
+.env.*
+uploads
