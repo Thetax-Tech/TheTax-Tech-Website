@@ -29,6 +29,8 @@ const db = new PrismaClient({
     password: decodeURIComponent(url.password),
     database: url.pathname.slice(1),
     allowPublicKeyRetrieval: true,
+    connectTimeout: 20_000,
+    ssl: url.searchParams.get("ssl") === "true" ? { rejectUnauthorized: true } : undefined,
   }),
 });
 const force = process.argv.includes("--force");

@@ -20,6 +20,8 @@ function createClient() {
     connectionLimit: Number(process.env.DATABASE_POOL_SIZE || 5),
     connectTimeout: 10_000,
     allowPublicKeyRetrieval: true,
+    // Cloud MySQL (e.g. TiDB Cloud) requires TLS: add `?ssl=true` to DATABASE_URL.
+    ssl: u.searchParams.get("ssl") === "true" ? { rejectUnauthorized: true } : undefined,
   });
   return new PrismaClient({ adapter });
 }
