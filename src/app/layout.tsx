@@ -37,6 +37,10 @@ export const viewport: Viewport = {
 
 const HEX = /^#[0-9a-f]{6}$/i;
 
+// Google Analytics 4 (gtag.js)
+const GA_ID = "G-JHX44RX5GR";
+const GA_SCRIPT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`;
+
 // Meta Pixel (Facebook) — base code + PageView
 const META_PIXEL_ID = "1104379589068554";
 const META_PIXEL_SCRIPT = `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');`;
@@ -54,6 +58,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script dangerouslySetInnerHTML={{ __html: LOADER_HEAD_SCRIPT }} />
         {brand.toLowerCase() !== "#f7941d" && <style>{`:root{--brand:${brand}}`}</style>}
+        {/* Google tag (gtag.js) */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+        <script dangerouslySetInnerHTML={{ __html: GA_SCRIPT }} />
         {/* Meta Pixel Code */}
         <script dangerouslySetInnerHTML={{ __html: META_PIXEL_SCRIPT }} />
         {/* End Meta Pixel Code */}
