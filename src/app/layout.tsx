@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     publisher: s.site.legalName,
     formatDetection: { telephone: true, email: true, address: true },
     verification: {
-      google: s.analytics.googleVerification || undefined,
+      google: s.analytics.googleVerification || "Zjp8sFaFMt6gso5oAEpn_hubFKHRcju1gcYUozmJ7R0",
       other: s.analytics.bingVerification ? { "msvalidate.01": s.analytics.bingVerification } : undefined,
     },
   };

@@ -54,7 +54,7 @@ export const defaultSettings = {
   analytics: {
     gaId: "",
     gtmId: "",
-    googleVerification: "",
+    googleVerification: "Zjp8sFaFMt6gso5oAEpn_hubFKHRcju1gcYUozmJ7R0",
     bingVerification: "",
   },
   theme: {
